@@ -11,22 +11,10 @@ namespace PairExersice
         public string[] GetSortedsArrayFromString(string input) 
         {
             string[] words = input.Split(' ');
-            ReverseWordsInArray(words);
-            words.ToList().Sort();
-            ReverseWordsInArray(words);
+            Array.Sort(words, CompareByLastLetter);
             return words;
         }
 
-        public string[] ReverseWordsInArray(string[] inputArray) 
-        {
-            char[] chars;
-            for (int i = 0; i < inputArray.Length; i++)
-            {
-                chars = inputArray[i].ToCharArray();
-                Array.Reverse(chars);
-                inputArray[i] = new string(chars);
-            }
-            return inputArray;
-        }
+        public int CompareByLastLetter(string wordX, string wordY) => wordX.Last().CompareTo(wordY.Last());
     }
 }

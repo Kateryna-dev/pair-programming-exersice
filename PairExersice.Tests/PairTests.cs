@@ -20,31 +20,41 @@ namespace PairExersice.Tests
             //arrange
             string input = "how are you";
             string[] expetedOutput = new string[] { "are", "you", "how" };
-
             //act
             string[] actualOutput = WordManager.GetSortedsArrayFromString(input);
-
             //assert
-            actualOutput.Should().BeEquivalentTo(expetedOutput);
-        }
-
-
-        [Test]
-        public void ReverseWordsInArray_Should_Return_Correct_Array()
-        {
-            string[] input = { "how", "are", "you" };
-            string[] expetedOutput = { "woh", "era", "uoy" };
-            string[] actualOutput = WordManager.ReverseWordsInArray(input);
-            actualOutput.Should().BeEquivalentTo(expetedOutput);
+            Assert.True(expetedOutput.SequenceEqual(actualOutput));
         }
 
         [Test]
         public void GetSortedArrayFromString_Should_Return_Correct_Array_With_Same_End_Latters()
         {
             string input = "www how wow are you now";
-            string[] expetedOutput = { "are", "you", "www", "wow", "how", "now" };
+            string[] expetedOutput = { "are", "you", "www", "how", "wow", "now" };
             string[] actualOutput = WordManager.GetSortedsArrayFromString(input);
-            actualOutput.Should().BeEquivalentTo(expetedOutput);
+            Assert.True(expetedOutput.SequenceEqual(actualOutput));
         }
+
+        [Test]
+        public void GetSortedArrayFromString_Should_Return_Correct_Array_For_Diff_End_Leters()
+        {
+            string input = "ag bf ce dd ec fb ga";
+            string[] expetedOutput = { "ga", "fb", "ec", "dd", "ce", "bf", "ag" };
+            string[] actualOutput = WordManager.GetSortedsArrayFromString(input);
+            Assert.True(expetedOutput.SequenceEqual(actualOutput));
+        }
+
+        [Test]
+        public void CompareByLastLetter_Should_Return_Correct_Answer()
+        {
+            Assert.True(WordManager.CompareByLastLetter("bb", "af") < 0);
+            Assert.True(WordManager.CompareByLastLetter("abz", "uvw") > 0);
+            Assert.True(WordManager.CompareByLastLetter("how", "wow") == 0);
+            Assert.True(WordManager.CompareByLastLetter("abc", "abc") == 0);
+            Assert.True(WordManager.CompareByLastLetter("how", "are") > 0);
+            Assert.True(WordManager.CompareByLastLetter("you", "are") > 0);
+
+        }
+
     }
 }
