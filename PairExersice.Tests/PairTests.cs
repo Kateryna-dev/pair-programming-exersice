@@ -15,14 +15,29 @@ namespace PairExersice.Tests
         }
 
         [Test]
-        public void GetArrayFromString_Should_Return_Array_In_Alphabet_Order()
+        public void GetSortedArrayFromString_Should_Return_Correct_Array()
         {
             //arrange
             string input = "how are you";
-            string[] expetedOutput = new string[] { "are", "how", "you" };
+            string[] expetedOutput = new string[] { "are", "you", "how" };
 
             //act
-            string[] actualOutput = WordManager.GetArrayFromString(input);
+            string[] actualOutput = WordManager.GetSortedsArrayFromString(input);
+
+            //assert
+            actualOutput.Should().BeEquivalentTo(expetedOutput);
+        }
+
+
+        [Test]
+        public void ReverseWordsInArray_Should_Return_Correct_Array()
+        {
+            //arrange
+            string[] input = { "how", "are", "you" };
+            string[] expetedOutput = { "woh", "era", "uoy" };
+
+            //act
+            string[] actualOutput = WordManager.ReverseWordsInArray(input);
 
             //assert
             actualOutput.Should().BeEquivalentTo(expetedOutput);
