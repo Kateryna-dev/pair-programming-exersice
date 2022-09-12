@@ -36,6 +36,22 @@ namespace PairExersice.Tests
         }
 
         [Test]
+        public void GetSortedArrayFromString_Should_Deal_With_EmptySpace_String()
+        {
+            string[] expetedOutput = new string[0];
+            string[] actualOutput = WordManager.GetSortedsArrayFromString("");
+            Assert.True(expetedOutput.SequenceEqual(actualOutput));
+        }
+
+        [Test]
+        public void GetSortedArrayFromString_Should_Deal_With_Null()
+        {
+            string[] expetedOutput = new string[0];
+            string[] actualOutput = WordManager.GetSortedsArrayFromString(null);
+            Assert.True(expetedOutput.SequenceEqual(actualOutput));
+        }
+
+        [Test]
         public void GetSortedArrayFromString_Should_Return_Correct_Array_For_Diff_End_Leters()
         {
             string input = "ag bf ce dd ec fb ga";

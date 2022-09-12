@@ -10,6 +10,7 @@ namespace PairExersice
     {
         public string[] GetSortedsArrayFromString(string input) 
         {
+            if (string.IsNullOrWhiteSpace(input)) return new string[0];
             string[] words = input.Split(' ');
             Array.Sort(words, CompareByLastLetter);
             return words;
